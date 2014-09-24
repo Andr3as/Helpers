@@ -1,6 +1,12 @@
 #LivePreviewHelper
 Implement a live preview in your plugin
 
+#Menu Entries and Hot Keys
+To toggle the live preview either use:
+
+- Rightbar 'LivePreview' entry
+- Hotkey 'Ctrl-Shift-O'
+
 #Usage
 - Load the script, if not already done
   - Initialise the code with the path of the directory which contains the source file

@@ -7,7 +7,7 @@
 
 codiad.LivePreviewHelper = {
 
-    version: "1.0.0",
+    version: "1.1.0",
     status: false,
     extensions: [],
 
@@ -30,6 +30,18 @@ codiad.LivePreviewHelper = {
         
         this.$onDocumentChange = this.onDocumentChange.bind(this);
         //Focus listener
+        amplify.subscribe("active.onOpen", function(path){
+            if (codiad.editor.getActive() !== null && _this.testPath(path)) {
+                var manager = codiad.editor.getActive().commands;
+                manager.addCommand({
+                    name: 'OpenPreview',
+                    bindKey: "Ctrl-Shift-O",
+                    exec: function () {
+                        _this.livePreview();
+                    }
+                });
+            }
+        });
         amplify.subscribe('active.onFocus', function(path){
             if (_this.testPath(path)) {
                 $('.live-preview').show();
