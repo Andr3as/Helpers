@@ -111,6 +111,11 @@ codiad.LivePreviewHelper = {
      * @param {string} path Path of file for preview
      */
     show: function(path) {
+    	//If the window is divided?
+        if ($('.editor').size() > 1) {
+            codiad.message.error("Livepreview does not work with splited windows");
+            return false;
+        }
         $('.editor').width('50%');
         codiad.editor.resize();
         $('.editor').after('<div class="preview"><iframe></iframe></div>');
